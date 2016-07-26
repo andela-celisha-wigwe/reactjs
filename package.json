@@ -1,0 +1,30 @@
+{
+  "name": "reactjs",
+  "version": "1.0.0",
+  "description": "Learning react with a small tutorial application",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andela-celisha-wigwe/reactjs.git"
+  },
+  "keywords": [
+    "react",
+    "tutorial"
+  ],
+  "author": "andela-celisha-wigwe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andela-celisha-wigwe/reactjs/issues"
+  },
+  "homepage": "https://github.com/andela-celisha-wigwe/reactjs#readme",
+  "devDependencies": {
+    "babel-core": "^6.11.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-react": "^6.11.1",
+    "html-webpack-plugin": "^2.22.0",
+    "webpack": "^1.13.1"
+  }
+}
