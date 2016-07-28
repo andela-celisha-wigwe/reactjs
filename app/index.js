@@ -1,5 +1,7 @@
-var React = require('react')
-var ReactDOM = require('react-dom')
+var React = require('react');
+var ReactDOM = require('react-dom');
+var $ = require('jquery');
+var routes = require('./config/routes.js');
 
 var data = [{
   "id": 1,
@@ -46,7 +48,7 @@ var data = [{
 var ProfilePic = React.createClass({
 	render: function() {
 		return (
-			<img src={this.props.image} className="img img-responsive" />
+			<img src={this.props.image} className="img img-responsive center-block" />
 		)
 	}
 });
@@ -66,6 +68,9 @@ var ProfileLink = React.createClass({
 	render: function() {
 		return (
 			<div>
+				<Link href={"https://www.github.com/" + this.props.username}>
+					{this.props.username}
+				</Link>
 			</div>
 		)
 	}
@@ -82,6 +87,22 @@ var HelloWorld = React.createClass({
 	}
 });
 
+var Link = React.createClass({
+	changeUrl(){
+		window.location.replace(this.props.href)
+	},
+
+    render() {
+        return (
+            <span
+            style={{color:'blue', cursor:'pointer'}}
+            onClick={this.changeUrl}
+            >
+            	{this.props.children}
+            </span>
+        );
+    }
+});
 
 var Avatar = React.createClass({
 	render: function() {
@@ -98,8 +119,7 @@ var Avatar = React.createClass({
 
 var Container = React.createClass({
 	render: function() {
-		const data = this.props.data;
-		const cont = data.map( (user) => {
+		const cont = this.props.data.map( (user) => {
 			user.key = Date.now() + user.id
 			return <Avatar user={user} key={user.key} />
 		})
@@ -111,6 +131,6 @@ var Container = React.createClass({
 	}
 });
 
-ReactDOM.render( <Container data={data} />, document.getElementById('app'));
+ReactDOM.render( routes, document.getElementById('app'));
 
 
