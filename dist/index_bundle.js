@@ -31340,9 +31340,13 @@
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _PromptContainer = __webpack_require__(240);
+	var _PromptContainer = __webpack_require__(241);
 
 	var _PromptContainer2 = _interopRequireDefault(_PromptContainer);
+
+	var _ConfirmBattleContainer = __webpack_require__(243);
+
+	var _ConfirmBattleContainer2 = _interopRequireDefault(_ConfirmBattleContainer);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31354,7 +31358,8 @@
 			{ path: "/", component: _Main2.default },
 			_react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
 			_react2.default.createElement(_reactRouter.Route, { path: "/playerOne", header: "Player One", component: _PromptContainer2.default }),
-			_react2.default.createElement(_reactRouter.Route, { path: "/playerTwo/:playerOne", header: "Player Two", component: _PromptContainer2.default })
+			_react2.default.createElement(_reactRouter.Route, { path: "/playerTwo/:playerOne", header: "Player Two", component: _PromptContainer2.default }),
+			_react2.default.createElement(_reactRouter.Route, { path: "battle", component: _ConfirmBattleContainer2.default })
 		)
 	);
 
@@ -37034,7 +37039,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _styles = __webpack_require__(241);
+	var _styles = __webpack_require__(240);
 
 	var _reactRouter = __webpack_require__(175);
 
@@ -37091,6 +37096,20 @@
 
 /***/ },
 /* 240 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var styles = {
+		transparentBg: {
+			background: 'transparent'
+		}
+	};
+
+	module.exports = styles;
+
+/***/ },
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37157,20 +37176,6 @@
 	module.exports = PromptContainer;
 
 /***/ },
-/* 241 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	var styles = {
-		transparentBg: {
-			background: 'transparent'
-		}
-	};
-
-	module.exports = styles;
-
-/***/ },
 /* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -37184,7 +37189,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _styles = __webpack_require__(241);
+	var _styles = __webpack_require__(240);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -37238,6 +37243,79 @@
 	};
 
 	exports.default = Prompt;
+
+/***/ },
+/* 243 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _ConfirmBattle = __webpack_require__(244);
+
+	var _ConfirmBattle2 = _interopRequireDefault(_ConfirmBattle);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ConfirmBattleContainer = _react2.default.createClass({
+					displayName: "ConfirmBattleContainer",
+
+					contextTypes: function contextTypes() {
+									router: _react2.default.PropTypes.object.isRequired;
+					},
+
+					getInitialState: function getInitialState() {
+									return {
+													isLoading: false,
+													playersInfo: []
+									};
+					},
+
+					componentWillMount: function componentWillMount() {
+									var query = this.props.location.query;
+					},
+
+					componentDidMount: function componentDidMount() {
+									var query = this.props.location.query;
+					},
+
+					render: function render() {
+									return _react2.default.createElement(_ConfirmBattle2.default, {
+													isLoading: this.state.isLoading,
+													playersInfo: this.state.playersInfo
+									});
+					}
+	});
+
+	module.exports = ConfirmBattleContainer;
+
+/***/ },
+/* 244 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(2);
+
+	var ConfirmBattle = React.createClass({
+	    displayName: 'ConfirmBattle',
+	    render: function render() {
+	        return this.props.isLoading === true ? React.createElement(
+	            'p',
+	            null,
+	            ' LOADING!!! '
+	        ) : React.createElement(
+	            'p',
+	            null,
+	            ' CONFIRM BATTLE! '
+	        );
+	    }
+	});
+
+	module.exports = ConfirmBattle;
 
 /***/ }
 /******/ ]);
